@@ -1,25 +1,18 @@
+// 2020-03-17 : Modified version of app from  https://reactjs.org/docs/integrating-with-other-libraries.html
+
+
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Chosen from "./Chosen";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Chosen onChange={value => console.log(value)}>
+        <option>vanilla</option>
+        <option>chocolate</option>
+        <option>strawberry</option>
+      </Chosen>
   );
 }
 
