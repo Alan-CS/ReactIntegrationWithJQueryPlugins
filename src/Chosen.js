@@ -32,10 +32,13 @@ export default class Chosen extends React.Component {
 
     render() {
         return (
-            <div className="chosenContainer">
+            <div>
+                <span>Select A Country</span>
+                <div className="chosenContainer">
                 <select className="Chosen-select" ref={el => this.el = el}>
                     {this.props.children}
                 </select>
+                </div>
             </div>
         );
     }

@@ -29,7 +29,7 @@ function App() {
 
             <div className="componentContainer">
                 <div className="checkboxContainer">
-                    Show Hidden Countries
+                    <span> Show Hidden Countries </span>
                     <input
                         type="checkbox"
                         checked={showHidden}
