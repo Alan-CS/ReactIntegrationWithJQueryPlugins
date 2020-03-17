@@ -6,8 +6,11 @@ const $ = window.$;
 export default class Chosen extends React.Component {
     componentDidMount() {
         console.log("componentDidMount called... ");
-        this.$el = $(this.el);
-        this.$el.chosen();
+        // this.$el = $(this.el);
+        // this.$el.chosen();
+        // Alan: Commented out above orig code and instead replaced it with below and it still works
+        // since a jQuery plugin returns the same selections
+        this.$el = $(this.el).chosen();
 
         this.handleChange = this.handleChange.bind(this);
         this.$el.on('change', this.handleChange);
@@ -23,7 +26,9 @@ export default class Chosen extends React.Component {
     componentWillUnmount() {
         console.log("componentWillUnmount called... ");
         this.$el.off('change', this.handleChange);
-        this.$el.chosen('destroy');
+        // this.$el.chosen('destroy');
+        // Alan: Commented out above orig code and replaced it with below code
+        this.$el('destroy');
     }
 
     handleChange(e) {
