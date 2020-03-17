@@ -12,12 +12,37 @@ const hiddenCountries = ['Canada', 'Mexico', 'India', 'China'];
 function App() {
     const [countries, setCountries] = useState(initCountries);
     const [showHidden, setHidden] = useState(false);
+    const [isShownComponent, setComponent] = useState(true);
 
     const handleInputChange = (event) => {
         const checked = event.target.checked;
         setHidden(checked);
         checked ? setCountries(initCountries.concat(hiddenCountries)) :
             setCountries(initCountries);
+    }
+
+    const component = (
+        <div className="componentContainer">
+            <div className="checkboxContainer">
+                <span> Show Hidden Countries </span>
+                <input
+                    type="checkbox"
+                    checked={showHidden}
+                    onChange={handleInputChange}/>
+            </div>
+            <Chosen onChange={value => console.log(`Selected country is ${value}`)}>
+                {
+                    countries.map((country, index) => <option key={index}> {country} </option>)
+                }
+            </Chosen>
+        </div>
+    );
+
+    let button;
+    if ( isShownComponent ) {
+        button = <button onClick={() => setComponent(false)}> Hide Component </button>
+    } else {
+        button = <button onClick={() => setComponent(true)}> Show Component </button>
     }
 
     return (
@@ -27,20 +52,10 @@ function App() {
                     Documents on Integration with jQuery Plugins </a>
             </p>
 
-            <div className="componentContainer">
-                <div className="checkboxContainer">
-                    <span> Show Hidden Countries </span>
-                    <input
-                        type="checkbox"
-                        checked={showHidden}
-                        onChange={handleInputChange}/>
-                </div>
-                <Chosen onChange={value => console.log(`Selected country is ${value}`)}>
-                    {
-                        countries.map((country, index) => <option key={index}> {country} </option>)
-                    }
-                </Chosen>
-            </div>
+            { button }
+            {isShownComponent && component}
+            {!isShownComponent && <p>The component is hidden. Click above button to show it again.</p>}
+
         </div>
     );
 }
