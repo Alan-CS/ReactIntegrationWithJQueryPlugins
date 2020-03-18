@@ -1,7 +1,8 @@
 .App {
-  margin: 2em auto;
-  width: 60%;
-  text-align: center;
+  /*margin: 2em auto;*/
+  margin: 2em 5%;
+  /*width: 60%;*/
+  /*text-align: center;*/
 }
 
 .checkboxContainer {
@@ -19,7 +20,7 @@
 
 .componentContainer {
   width: 40%;
-  margin: auto;
+  /*margin: auto;*/
   padding: 2em;
   border: 1px solid lightgray;
   border-radius: 1em;
@@ -49,4 +50,12 @@ button {
   /*margin-top: 0;*/
   display: block;
   margin: 0 auto 2em auto;
+}
+
+li {
+  font-size: 0.8em;
+}
+
+li + li {
+  margin-top: 0.9em;
 }
