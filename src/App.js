@@ -1,7 +1,7 @@
 // 2020-03-17 : Modified version of app from  https://reactjs.org/docs/integrating-with-other-libraries.html
 // Use a checkbox to control the child(Chosen) component's children
 
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import './App.css';
 import Chosen from "./Chosen";
 
@@ -10,27 +10,48 @@ const initCountries = ['USA', 'UK', "Nigeria", 'South Africa', 'Argentina'];
 const hiddenCountries = ['Canada', 'Mexico', 'India', 'China'];
 
 function App() {
-    const [countries, setCountries] = useState(initCountries);
-    const [showHidden, setHidden] = useState(false);
-    const [isShownComponent, setComponent] = useState(true);
 
-    const handleInputChange = (event) => {
+    // Below code allows the Chosen jQuery Functionality to be disabled/reenabled
+    const [isChosenEnabled, setChosen] = useState(true);
+    const chosenEl = useRef(null);
+    const changeChosen = (event) => {
+        if (isChosenEnabled) {
+            setChosen(false);
+            chosenEl.current.destroyChosen();
+        }
+        else {
+            setChosen(true);
+            chosenEl.current.enableChosen();
+        }
+    }
+    let buttonShowChosen;
+    if ( isChosenEnabled ) {
+        buttonShowChosen = <button onClick={() => changeChosen(false)}> Destroy Chosen </button>
+    } else {
+        buttonShowChosen = <button onClick={() => changeChosen(true)}> ReEnable Chosen </button>
+    }
+
+
+    const [countries, setCountries] = useState(initCountries);
+    const [showHiddenCountries, setHiddenCountries] = useState(false);
+
+    const handleShowHiddenCountriesChange = (event) => {
         const checked = event.target.checked;
-        setHidden(checked);
+        setHiddenCountries(checked);
         checked ? setCountries(initCountries.concat(hiddenCountries)) :
             setCountries(initCountries);
     }
-
     const component = (
         <div className="componentContainer">
+            { buttonShowChosen }
             <div className="checkboxContainer">
                 <span> Show Hidden Countries </span>
                 <input
                     type="checkbox"
-                    checked={showHidden}
-                    onChange={handleInputChange}/>
+                    checked={showHiddenCountries}
+                    onChange={handleShowHiddenCountriesChange}/>
             </div>
-            <Chosen onChange={value => console.log(`Selected country is ${value}`)}>
+            <Chosen ref={chosenEl} onChange={value => console.log(`Selected country is ${value}`)}>
                 {
                     countries.map((country, index) => <option key={index}> {country} </option>)
                 }
@@ -38,6 +59,8 @@ function App() {
         </div>
     );
 
+    // Allows showing/hiding the entire component
+    const [isShownComponent, setComponent] = useState(true);
     let button;
     if ( isShownComponent ) {
         button = <button onClick={() => setComponent(false)}> Hide Component </button>

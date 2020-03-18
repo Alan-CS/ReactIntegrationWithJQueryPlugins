@@ -33,6 +33,16 @@ export default class Chosen extends React.Component {
         this.props.onChange(e.target.value);
     }
 
+    destroyChosen() {
+        console.log("Destroying Chosen Plugin.")
+        this.$el.chosen('destroy');
+    }
+
+    enableChosen() {
+        console.log("Enabling Chosen Plugin.")
+        this.$el.chosen();
+    }
+
     render() {
         return (
             <div>

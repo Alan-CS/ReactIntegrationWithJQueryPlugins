@@ -41,6 +41,12 @@ button {
   padding: 0.6em 1em;
   border-radius: 1em;
   background-color: aqua;
-  font-size: 0.9em;
+  font-size: 0.7em;
   outline: none;
+}
+
+.componentContainer button {
+  /*margin-top: 0;*/
+  display: block;
+  margin: 0 auto 2em auto;
 }
