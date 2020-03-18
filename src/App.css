@@ -42,4 +42,5 @@ button {
   border-radius: 1em;
   background-color: aqua;
   font-size: 0.9em;
+  outline: none;
 }
