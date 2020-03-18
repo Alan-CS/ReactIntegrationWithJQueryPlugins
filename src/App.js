@@ -3,66 +3,15 @@
 // 2. Allow the jquery plugin component to be destroyed and re-enabled
 // 3. Allow the entire component to be hidden and redisplayed
 
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Chosen from "./Chosen";
-
-const initCountries = ['USA', 'UK', "Nigeria", 'South Africa', 'Argentina'];
-
-const hiddenCountries = ['Canada', 'Mexico', 'India', 'China'];
+import ChosenWrapper from "./ChosenWrapper";
 
 function App() {
 
-    // Below code allows the Chosen jQuery Functionality to be disabled/reenabled
-    const [isChosenEnabled, setChosen] = useState(true);
-    const chosenEl = useRef(null);
-    const changeChosen = (event) => {
-        if (isChosenEnabled) {
-            setChosen(false);
-            chosenEl.current.destroyChosen();
-        }
-        else {
-            setChosen(true);
-            chosenEl.current.enableChosen();
-        }
-    }
-    let buttonShowChosen;
-    if ( isChosenEnabled ) {
-        buttonShowChosen = <button onClick={() => changeChosen(false)}> Destroy Chosen </button>
-    } else {
-        buttonShowChosen = <button onClick={() => changeChosen(true)}> ReEnable Chosen </button>
-    }
-
-
-    const [countries, setCountries] = useState(initCountries);
-    const [showHiddenCountries, setHiddenCountries] = useState(false);
-
-    const handleShowHiddenCountriesChange = (event) => {
-        const checked = event.target.checked;
-        setHiddenCountries(checked);
-        checked ? setCountries(initCountries.concat(hiddenCountries)) :
-            setCountries(initCountries);
-    }
-    const component = (
-        <div className="componentContainer">
-            { buttonShowChosen }
-            <div className="checkboxContainer">
-                <span> Show Hidden Countries </span>
-                <input
-                    type="checkbox"
-                    checked={showHiddenCountries}
-                    onChange={handleShowHiddenCountriesChange}/>
-            </div>
-            <Chosen ref={chosenEl} onChange={value => console.log(`Selected country is ${value}`)}>
-                {
-                    countries.map((country, index) => <option key={index}> {country} </option>)
-                }
-            </Chosen>
-        </div>
-    );
-
     // Allows showing/hiding the entire component
     const [isShownComponent, setComponent] = useState(true);
+
     let button;
     if ( isShownComponent ) {
         button = <button onClick={() => setComponent(false)}> Hide Component </button>
@@ -78,7 +27,7 @@ function App() {
             </p>
 
             { button }
-            {isShownComponent && component}
+            {isShownComponent && <ChosenWrapper/>}
             {!isShownComponent && <p>The component is hidden. Click above button to show it again.</p>}
 
         </div>
