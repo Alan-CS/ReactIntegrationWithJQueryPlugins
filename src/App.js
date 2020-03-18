@@ -1,5 +1,7 @@
 // 2020-03-17 : Modified version of app from  https://reactjs.org/docs/integrating-with-other-libraries.html
-// Use a checkbox to control the child(Chosen) component's children
+// 1. Use a checkbox to control the child(Chosen) component's children (countries)
+// 2. Allow the jquery plugin component to be destroyed and re-enabled
+// 3. Allow the entire component to be hidden and redisplayed
 
 import React, {useState, useRef} from 'react';
 import './App.css';
