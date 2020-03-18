@@ -20,9 +20,9 @@ export default function ChosenWrapper() {
     };
 
     const buttonShowChosen = isChosenEnabled ?
-        <button onClick={() => changeChosen(false)}> Destroy Chosen </button>
+        <button onClick={() => changeChosen(false)}> Disable Chosen </button>
         :
-        <button onClick={() => changeChosen(true)}> ReEnable Chosen </button>;
+        <button onClick={() => changeChosen(true)}> Enable Chosen </button>;
 
     const [countries, setCountries] = useState(initCountries);
     const [showHiddenCountries, setHiddenCountries] = useState(false);
