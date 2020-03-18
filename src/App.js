@@ -12,12 +12,11 @@ function App() {
     // Allows showing/hiding the entire component
     const [isShownComponent, setComponent] = useState(true);
 
-    let button;
-    if ( isShownComponent ) {
-        button = <button onClick={() => setComponent(false)}> Hide Component </button>
-    } else {
-        button = <button onClick={() => setComponent(true)}> Show Component </button>
-    }
+    const button = isShownComponent ? <button onClick={() => setComponent(false)}> Hide Component </button> :
+        <button onClick={() => setComponent(true)}> Show Component </button>;
+
+    const Component = isShownComponent ? <ChosenWrapper/> :
+        <p>The component is hidden. Click above button to show it again.</p>;
 
     return (
         <div className="App">
@@ -27,8 +26,7 @@ function App() {
             </p>
 
             { button }
-            {isShownComponent && <ChosenWrapper/>}
-            {!isShownComponent && <p>The component is hidden. Click above button to show it again.</p>}
+            { Component }
 
         </div>
     );

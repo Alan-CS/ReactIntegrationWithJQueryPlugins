@@ -6,7 +6,7 @@ const hiddenCountries = ['Canada', 'Mexico', 'India', 'China'];
 
 export default function ChosenWrapper() {
 
-    // Below code allows the Chosen jQuery Functionality to be disabled/reenabled
+    // Below code allows the Chosen jQuery Functionality to be disabled/reenabled using a ref
     const [isChosenEnabled, setChosen] = useState(true);
     const chosenEl = useRef(null);
     const changeChosen = (event) => {
@@ -17,13 +17,12 @@ export default function ChosenWrapper() {
             setChosen(true);
             chosenEl.current.enableChosen();
         }
-    }
-    let buttonShowChosen;
-    if (isChosenEnabled) {
-        buttonShowChosen = <button onClick={() => changeChosen(false)}> Destroy Chosen </button>
-    } else {
-        buttonShowChosen = <button onClick={() => changeChosen(true)}> ReEnable Chosen </button>
-    }
+    };
+
+    const buttonShowChosen = isChosenEnabled ?
+        <button onClick={() => changeChosen(false)}> Destroy Chosen </button>
+        :
+        <button onClick={() => changeChosen(true)}> ReEnable Chosen </button>;
 
     const [countries, setCountries] = useState(initCountries);
     const [showHiddenCountries, setHiddenCountries] = useState(false);
