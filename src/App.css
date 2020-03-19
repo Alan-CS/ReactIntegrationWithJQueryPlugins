@@ -10,6 +10,8 @@
   padding: 1em;
   display: inline-block;
   background-color: beige;
+  /* Set width to some fair value to prevent the width from expanding when component is hidden */
+  width: 350px;
 }
 
 .checkboxContainer {
