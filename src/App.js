@@ -16,7 +16,7 @@ function App() {
         <button onClick={() => setComponent(true)}> Show Component </button>;
 
     const Component = isShownComponent ? <ChosenWrapper/> :
-        <p>The component is hidden. Click above button to show it again.</p>;
+        <p style={{fontSize: '0.8em'}}>The component has been unmounted. Click the <b>Show Component</b> button to mount it again.</p>;
 
     return (
         <div className="App">
