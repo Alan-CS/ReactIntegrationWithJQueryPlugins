@@ -1,8 +1,15 @@
 .App {
-  /*margin: 2em auto;*/
   margin: 2em 5%;
-  /*width: 60%;*/
-  /*text-align: center;*/
+  max-width: 800px;
+}
+
+.appContainer {
+  margin-top: 1em;
+  border: 1px solid lightgreen;
+  border-radius: 0.5em;
+  padding: 1em;
+  display: inline-block;
+  background-color: beige;
 }
 
 .checkboxContainer {
@@ -19,8 +26,7 @@
 }
 
 .componentContainer {
-  width: 40%;
-  /*margin: auto;*/
+  width: 80%;
   padding: 2em;
   border: 1px solid lightgray;
   border-radius: 1em;
@@ -37,7 +43,6 @@ span {
 }
 
 button {
-  margin-top: 2em;
   margin-bottom: 2em;
   padding: 0.6em 1em;
   border-radius: 1em;
@@ -47,7 +52,6 @@ button {
 }
 
 .componentContainer button {
-  /*margin-top: 0;*/
   display: block;
   margin: 0 auto 2em auto;
 }

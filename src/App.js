@@ -21,11 +21,11 @@ function App() {
     return (
         <div className="App">
             <h1>Integrating jQuery Plugins into a Modern React App</h1>
-            <p> This is a modified (more dynamic) version of the App in the React
+            <p> This is a modified, more dynamic version of the App in the React
                 Documents on
                 <a href="https://reactjs.org/docs/integrating-with-other-libraries.html#integrating-with-jquery-chosen-plugin"> Integration with jQuery Plugins </a>.
                 The purpose of this app is to display a picklist of countries using the jQuery&nbsp;
-                <a href="https://harvesthq.github.io/chosen/"><b>Chosen</b></a> plugin.
+                <a href="https://harvesthq.github.io/chosen/"><b>Chosen</b></a> plugin, to give the picklist more style and functionality.
             </p>
             <ul>
                 <li>
@@ -42,8 +42,11 @@ function App() {
                 </li>
             </ul>
 
-            { button }
-            { Component }
+                <fieldset className="appContainer">
+                    <legend>Demo App</legend>
+                    {button}
+                    {Component}
+                </fieldset>
 
         </div>
     );
