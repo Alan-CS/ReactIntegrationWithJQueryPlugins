@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is a modified, more dynamic version of the App in the React Documents on [Integration with jQuery Plugins](https://reactjs.org/docs/integrating-with-other-libraries.html#integrating-with-jquery-chosen-plugin) . The purpose of this app is to display a picklist of countries using the jQuery [Chosen](https://harvesthq.github.io/chosen/) plugin, to give the picklist more style and functionality. A live version of this application is available on [CodePen](https://codesandbox.io/s/stupefied-dawn-ybpt0)
+
 ## Available Scripts
 
 In the project directory, you can run:
